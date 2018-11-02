@@ -150,7 +150,7 @@ namespace Salazar.Measurements
 
         public Measure SumWith(Measure measure)
         {
-            return new Measure(Default += measure.Default, Measurements.Default);
+            return new Measure(Default + measure.Default, Measurements.Default);
         }
     }
 }
