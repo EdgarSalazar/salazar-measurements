@@ -147,5 +147,10 @@ namespace Salazar.Measurements
         {
             return Default < measure.Default;
         }
+
+        public Measure SumWith(Measure measure)
+        {
+            return new Measure(Default += measure.Default, Measurements.Default);
+        }
     }
 }
