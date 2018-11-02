@@ -137,5 +137,15 @@ namespace Salazar.Measurements
 
             Default = value / factor;
         }
+
+        public bool GreaterThan(Measure measure)
+        {
+            return Default > measure.Default;
+        }
+
+        public bool LowerThan(Measure measure)
+        {
+            return Default < measure.Default;
+        }
     }
 }
