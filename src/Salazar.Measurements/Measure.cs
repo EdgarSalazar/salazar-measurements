@@ -6,15 +6,15 @@ namespace Salazar.Measurements
     {
         public FactorFromDefaultAttribute(double factor)
         {
-            Factor = factor;
+            Factor = (decimal)factor;
         }
 
-        public double Factor { get; set; }
+        public decimal Factor { get; set; }
     }
 
     public static class Extensions
     {
-        public static double GetFactor(this Measurements measurement)
+        public static decimal GetFactor(this Measurements measurement)
         {
             var type = typeof(Measurements);
             var memInfo = type.GetMember(measurement.ToString());
@@ -45,12 +45,12 @@ namespace Salazar.Measurements
 
     public class Measure
     {
-        public Measure(double measure, Measurements measurement = Measurements.Default)
+        public Measure(decimal measure, Measurements measurement = Measurements.Default)
         {
             Set(measure, measurement);
         }
 
-        public double Milli
+        public decimal Milli
         {
             get
             {
@@ -62,7 +62,7 @@ namespace Salazar.Measurements
             }
         }
 
-        public double Centi
+        public decimal Centi
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Salazar.Measurements
             }
         }
 
-        public double Deci
+        public decimal Deci
         {
             get
             {
@@ -86,9 +86,9 @@ namespace Salazar.Measurements
             }
         }
 
-        public double Default { get; set; }
+        public decimal Default { get; set; }
 
-        public double Deca
+        public decimal Deca
         {
             get
             {
@@ -100,7 +100,7 @@ namespace Salazar.Measurements
             }
         }
 
-        public double Hecto
+        public decimal Hecto
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Salazar.Measurements
             }
         }
 
-        public double Kilo
+        public decimal Kilo
         {
             get
             {
@@ -124,14 +124,14 @@ namespace Salazar.Measurements
             }
         }
 
-        private double Get(Measurements measurement)
+        private decimal Get(Measurements measurement)
         {
             var factor = measurement.GetFactor();
 
             return Default * factor;
         }
 
-        private void Set(double value, Measurements measurement)
+        private void Set(decimal value, Measurements measurement)
         {
             var factor = measurement.GetFactor();
 

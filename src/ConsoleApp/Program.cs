@@ -8,7 +8,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Value:");
-            var value = double.Parse(Console.ReadLine());
+            var value = decimal.Parse(Console.ReadLine());
 
             Console.WriteLine("Measurement (empty for default):");
 
@@ -25,10 +25,6 @@ namespace ConsoleApp
             Console.WriteLine($"Deca: {measure.Deca}");
             Console.WriteLine($"Hecto: {measure.Hecto}");
             Console.WriteLine($"Kilo: {measure.Kilo}");
-
-
-            Console.WriteLine("Press any key to close...");
-            Console.ReadLine();
         }
     }
 }
