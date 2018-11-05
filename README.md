@@ -4,6 +4,8 @@ This lib can be used to convert between values on the same measurement unit, lik
 
 Works with convertions between values from/to these units: Milli, Centi, Deci, Default, Deca, Hecto and Kilo. All these values are available on the `Measurements` enum.
 
+[Available on Nuget](https://www.nuget.org/packages/Salazar.Measurements)
+
 ## Usage
 
     using Salazar.Measurements;
