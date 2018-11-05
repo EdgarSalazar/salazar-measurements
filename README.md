@@ -1,8 +1,10 @@
-# About
+## About
 
-This lib can be used to convert between units. All the available units are on the `Measurements` enum.
+This lib can be used to convert between values on the same measurement unit, like distance, weight, etc.
 
-# Usage
+Works with convertions between values from/to these units: Milli, Centi, Deci, Default, Deca, Hecto and Kilo. All these values are available on the `Measurements` enum.
+
+## Usage
 
     using Salazar.Measurements;
     
@@ -20,7 +22,7 @@ This lib can be used to convert between units. All the available units are on th
     var hectoGrams = measure.Hecto;  // Will be 10.
     var kiloGrams = measure.Kilo;  // Will be 1.
     
-You can also input different values into the `Measure` constructor, definint it's unit using the `Measurements` enum.
+You can also input different units into the `Measure` constructor, using the `Measurements` enum. Default value is `Measurements.Default`.
 
 Let's say you have 10 Kilograms, and want to get the ammount of Milligrams. All you have to do is start the `Measure` with 10 and the Kilo enum value:
 
@@ -28,6 +30,6 @@ Let's say you have 10 Kilograms, and want to get the ammount of Milligrams. All 
     
     var measure = new Measure(kilos, Measurements.Kilo);
     
-    var milliGrams = measure.Milli; // Will be 1000000.
+    var milliGrams = measure.Milli; // Will be 10000000.
     
-The `Measure` class should work conversions between the same unit, like distance (meter), weight (grams), etc.
+Actually, the lib will only convert between values in the same unit, like distance to distance (meter is default), weight to weight (grams is default), etc.
