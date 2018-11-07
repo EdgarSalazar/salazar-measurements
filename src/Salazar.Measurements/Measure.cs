@@ -50,6 +50,9 @@ namespace Salazar.Measurements
             Set(measure, measurement);
         }
 
+        /// <summary>
+        /// 1/1000 of the Default value.
+        /// </summary>
         public decimal Milli
         {
             get
@@ -62,6 +65,9 @@ namespace Salazar.Measurements
             }
         }
 
+        /// <summary>
+        /// 1/100 of the Default value.
+        /// </summary>
         public decimal Centi
         {
             get
@@ -74,6 +80,9 @@ namespace Salazar.Measurements
             }
         }
 
+        /// <summary>
+        /// 1/10 of the Default value.
+        /// </summary>
         public decimal Deci
         {
             get
@@ -86,8 +95,14 @@ namespace Salazar.Measurements
             }
         }
 
+        /// <summary>
+        /// The Default value. In the real world, would be equivalent to Meter or Gram.
+        /// </summary>
         public decimal Default { get; set; }
 
+        /// <summary>
+        /// 10 times of the Default value.
+        /// </summary>
         public decimal Deca
         {
             get
@@ -100,6 +115,9 @@ namespace Salazar.Measurements
             }
         }
 
+        /// <summary>
+        /// 100 times of the Default value.
+        /// </summary>
         public decimal Hecto
         {
             get
@@ -112,6 +130,9 @@ namespace Salazar.Measurements
             }
         }
 
+        /// <summary>
+        /// 1000 times of the Default value.
+        /// </summary>
         public decimal Kilo
         {
             get
@@ -138,19 +159,64 @@ namespace Salazar.Measurements
             Default = value / factor;
         }
 
+        /// <summary>
+        /// Check if this Measure object is greater then a given Measure object.
+        /// </summary>
+        /// <param name="measure">The Measure to be compared with.</param>
+        /// <returns></returns>
         public bool GreaterThan(Measure measure)
         {
             return Default > measure.Default;
         }
 
+        /// <summary>
+        /// Check if this Measure object is lower then a given Measure object.
+        /// </summary>
+        /// <param name="measure">The Measure to be compared with.</param>
+        /// <returns></returns>
         public bool LowerThan(Measure measure)
         {
             return Default < measure.Default;
         }
 
-        public Measure SumWith(Measure measure)
+        /// <summary>
+        /// Sum this Measure with another Measure.
+        /// </summary>
+        /// <param name="measure">The measure to sum</param>
+        /// <param name="newInstance">True: return new Measure with the given values. False: add the measure to this object.</param>
+        /// <returns></returns>
+        public Measure SumWith(Measure measure, bool newInstance = true)
         {
-            return new Measure(Default + measure.Default, Measurements.Default);
+            if(newInstance)
+            {
+                return new Measure(Default + measure.Default, Measurements.Default);
+            }
+            else
+            {
+                Default += measure.Default;
+
+                return this;
+            }
+        }
+
+        /// <summary>
+        /// Subtract this Measure with another Measure.
+        /// </summary>
+        /// <param name="measure">The measure to subtract</param>
+        /// <param name="newInstance">True: return new Measure with the given values. False: add the measure to this object.</param>
+        /// <returns></returns>
+        public Measure SubtractWith(Measure measure, bool newInstance = true)
+        {
+            if (newInstance)
+            {
+                return new Measure(Default - measure.Default, Measurements.Default);
+            }
+            else
+            {
+                Default -= measure.Default;
+
+                return this;
+            }
         }
     }
 }
